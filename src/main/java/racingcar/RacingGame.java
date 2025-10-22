@@ -46,7 +46,7 @@ public class RacingGame {
 
 	private void playRound(Cars cars) {
 		cars.moveAll();
-		outputView.printRoundResult(cars.cars());
+		outputView.printRoundResult(cars.getCars());
 	}
 
 	private void announceWinners(Cars cars) {

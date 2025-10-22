@@ -1,10 +1,19 @@
 package racingcar.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public record Cars(List<Car> cars) {
+public class Cars {
+	private final List<Car> cars;
+
+	public Cars(List<Car> cars) {
+		if (cars == null || cars.isEmpty()) {
+			throw new IllegalArgumentException("최소 1대의 자동차가 필요합니다.");
+		}
+		this.cars = new ArrayList<>(cars);
+	}
 
 	public void moveAll() {
 		for (Car car : cars) {
@@ -18,8 +27,7 @@ public record Cars(List<Car> cars) {
 		return getCarNamesAtPosition(maxPosition);
 	}
 
-	@Override
-	public List<Car> cars() {
+	public List<Car> getCars() {
 		return List.copyOf(cars);
 	}
 

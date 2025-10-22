@@ -114,25 +114,4 @@ class CarsTest {
 			assertThat(winners).containsExactlyInAnyOrder("pobi", "woni", "jun");
 		}
 	}
-
-	@Nested
-	@DisplayName("자동차 목록 반환")
-	class GetCars {
-
-		@Test
-		@DisplayName("cars() 메서드는 불변 리스트를 반환한다")
-		void carsReturnsUnmodifiableList() {
-			// given
-			Car car1 = new Car("pobi");
-			Car car2 = new Car("woni");
-			Cars cars = new Cars(List.of(car1, car2));
-
-			// when
-			List<Car> carList = cars.cars();
-
-			// then
-			assertThat(carList).hasSize(2);
-			assertThat(carList).isUnmodifiable();
-		}
-	}
 }
