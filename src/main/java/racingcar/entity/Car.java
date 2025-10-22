@@ -22,10 +22,14 @@ public class Car {
 		}
 	}
 
-	public void move(int randomValue) {
-		if (randomValue >= MOVE_THRESHOLD) {
+	public void move(boolean shouldMove) {
+		if (shouldMove) {
 			position++;
 		}
+	}
+
+	public static boolean shouldMove(int randomValue) {
+		return randomValue >= MOVE_THRESHOLD;
 	}
 
 	public String getName() {

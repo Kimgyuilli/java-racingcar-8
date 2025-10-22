@@ -3,8 +3,8 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.entity.Car;
+import racingcar.entity.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,25 +18,25 @@ public class RacingGame {
 	}
 
 	public void run() {
-		List<Car> cars = createCars();
+		Cars cars = createCars();
 		int racingCount = inputView.readRacingCount();
 
 		playRacing(cars, racingCount);
 		announceWinners(cars);
 	}
 
-	private List<Car> createCars() {
+	private Cars createCars() {
 		List<String> carNames = inputView.readCarNames();
-		List<Car> cars = new ArrayList<>();
+		List<Car> carList = new ArrayList<>();
 
 		for (String name : carNames) {
-			cars.add(new Car(name));
+			carList.add(new Car(name));
 		}
 
-		return cars;
+		return new Cars(carList);
 	}
 
-	private void playRacing(List<Car> cars, int racingCount) {
+	private void playRacing(Cars cars, int racingCount) {
 		outputView.printResultMessage();
 
 		for (int i = 0; i < racingCount; i++) {
@@ -44,45 +44,13 @@ public class RacingGame {
 		}
 	}
 
-	private void playRound(List<Car> cars) {
-		for (Car car : cars) {
-			int randomValue = Randoms.pickNumberInRange(0, 9);
-			car.move(randomValue);
-		}
-		outputView.printRoundResult(cars);
+	private void playRound(Cars cars) {
+		cars.moveAll();
+		outputView.printRoundResult(cars.getCars());
 	}
 
-	private void announceWinners(List<Car> cars) {
-		List<String> winners = findWinners(cars);
+	private void announceWinners(Cars cars) {
+		List<String> winners = cars.findWinnerNames();
 		outputView.printWinners(winners);
-	}
-
-	private List<String> findWinners(List<Car> cars) {
-		int maxPosition = findMaxPosition(cars);
-		return getCarNamesAtPosition(cars, maxPosition);
-	}
-
-	private int findMaxPosition(List<Car> cars) {
-		int maxPosition = 0;
-
-		for (Car car : cars) {
-			if (car.getPosition() > maxPosition) {
-				maxPosition = car.getPosition();
-			}
-		}
-
-		return maxPosition;
-	}
-
-	private List<String> getCarNamesAtPosition(List<Car> cars, int position) {
-		List<String> winners = new ArrayList<>();
-
-		for (Car car : cars) {
-			if (car.getPosition() == position) {
-				winners.add(car.getName());
-			}
-		}
-
-		return winners;
 	}
 }
