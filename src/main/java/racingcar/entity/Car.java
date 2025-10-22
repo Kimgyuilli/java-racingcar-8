@@ -13,8 +13,12 @@ public class Car {
 		this.position = 0;
 	}
 
+	public static boolean shouldMove(int randomValue) {
+		return randomValue >= MOVE_THRESHOLD;
+	}
+
 	private void validateName(String name) {
-		if(name == null || name.isBlank()) {
+		if (name == null || name.isBlank()) {
 			throw new IllegalArgumentException("자동차 이름은 빈 칸일 수 없습니다.");
 		}
 		if (name.length() > MAX_NAME_LENGTH) {
@@ -26,10 +30,6 @@ public class Car {
 		if (shouldMove) {
 			position++;
 		}
-	}
-
-	public static boolean shouldMove(int randomValue) {
-		return randomValue >= MOVE_THRESHOLD;
 	}
 
 	public String getName() {

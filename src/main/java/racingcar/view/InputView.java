@@ -13,7 +13,7 @@ public class InputView {
 	}
 
 	private List<String> parseCarNames(String input) {
-		if(input == null || input.isBlank()) {
+		if (input == null || input.isBlank()) {
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
 		}
 
