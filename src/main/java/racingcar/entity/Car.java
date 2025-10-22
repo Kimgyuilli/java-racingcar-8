@@ -1,6 +1,9 @@
 package racingcar.entity;
 
 public class Car {
+	private static final int MAX_NAME_LENGTH = 5;
+	private static final int MOVE_THRESHOLD = 4;
+
 	private final String name;
 	private int position;
 
@@ -14,13 +17,13 @@ public class Car {
 		if(name == null || name.isBlank()) {
 			throw new IllegalArgumentException("자동차 이름은 빈 칸일 수 없습니다.");
 		}
-		if (name.length() > 5) {
+		if (name.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
 		}
 	}
 
 	public void move(int randomValue) {
-		if (randomValue >= 4) {
+		if (randomValue >= MOVE_THRESHOLD) {
 			position++;
 		}
 	}
