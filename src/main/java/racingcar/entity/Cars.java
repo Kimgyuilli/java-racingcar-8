@@ -4,12 +4,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Cars {
-	private final List<Car> cars;
-
-	public Cars(List<Car> cars) {
-		this.cars = cars;
-	}
+public record Cars(List<Car> cars) {
 
 	public void moveAll() {
 		for (Car car : cars) {
@@ -23,7 +18,8 @@ public class Cars {
 		return getCarNamesAtPosition(maxPosition);
 	}
 
-	public List<Car> getCars() {
+	@Override
+	public List<Car> cars() {
 		return List.copyOf(cars);
 	}
 
