@@ -27,8 +27,10 @@ public class Cars {
 		return getCarNamesAtPosition(maxPosition);
 	}
 
-	public List<Car> getCars() {
-		return List.copyOf(cars);
+	public List<CarDto> getCarInfos() {
+		return cars.stream()
+			.map(car -> new CarDto(car.getName(), car.getPosition()))
+			.toList();
 	}
 
 	private int findMaxPosition() {

@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 
-import racingcar.entity.Car;
+import racingcar.entity.CarDto;
 
 public class OutputView {
 	public void printResultMessage() {
@@ -10,15 +10,15 @@ public class OutputView {
 		System.out.println("실행 결과");
 	}
 
-	public void printRoundResult(List<Car> cars) {
-		for (Car car : cars) {
+	public void printRoundResult(List<CarDto> cars) {
+		for (CarDto car : cars) {
 			printCarPosition(car);
 		}
 		System.out.println();
 	}
 
-	private void printCarPosition(Car car) {
-		System.out.println(car.getName() + " : " + generatePositionDisplay(car.getPosition()));
+	private void printCarPosition(CarDto car) {
+		System.out.println(car.name() + " : " + generatePositionDisplay(car.position()));
 	}
 
 	private String generatePositionDisplay(int position) {
