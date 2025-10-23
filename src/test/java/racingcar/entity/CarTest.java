@@ -58,42 +58,42 @@ class CarTest {
 	}
 
 	@Test
-	@DisplayName("move(true) 호출 시 자동차가 전진한다")
+	@DisplayName("이동 조건을 만족하면 자동차가 전진한다")
 	void moveForward() {
 		// given
 		Car car = new Car("pobi");
 
 		// when
-		car.move(true);
+		car.tryMove(4);
 
 		// then
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Test
-	@DisplayName("move(false) 호출 시 자동차가 정지한다")
+	@DisplayName("이동 조건을 만족하지 않으면 자동차가 정지한다")
 	void stop() {
 		// given
 		Car car = new Car("pobi");
 
 		// when
-		car.move(false);
+		car.tryMove(3);
 
 		// then
 		assertThat(car.getPosition()).isZero();
 	}
 
 	@Test
-	@DisplayName("여러 번 전진하면 위치가 누적된다")
+	@DisplayName("여러 번 시도하면 위치가 누적된다")
 	void moveMultipleTimes() {
 		// given
 		Car car = new Car("pobi");
 
 		// when
-		car.move(true);
-		car.move(true);
-		car.move(false);
-		car.move(true);
+		car.tryMove(4);
+		car.tryMove(5);
+		car.tryMove(3);
+		car.tryMove(9);
 
 		// then
 		assertThat(car.getPosition()).isEqualTo(3);
@@ -101,23 +101,29 @@ class CarTest {
 
 	@ParameterizedTest
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
-	@DisplayName("랜덤 값이 4 이상이면 shouldMove는 true를 반환한다")
-	void shouldMoveWhenValueIsGreaterThanOrEqualTo4(int randomValue) {
+	@DisplayName("랜덤 값이 4 이상이면 자동차가 전진한다")
+	void tryMoveWhenValueIsGreaterThanOrEqualTo4(int randomValue) {
+		// given
+		Car car = new Car("pobi");
+
 		// when
-		boolean result = Car.shouldMove(randomValue);
+		car.tryMove(randomValue);
 
 		// then
-		assertThat(result).isTrue();
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {0, 1, 2, 3})
-	@DisplayName("랜덤 값이 4 미만이면 shouldMove는 false를 반환한다")
-	void shouldNotMoveWhenValueIsLessThan4(int randomValue) {
+	@DisplayName("랜덤 값이 4 미만이면 자동차가 정지한다")
+	void tryMoveWhenValueIsLessThan4(int randomValue) {
+		// given
+		Car car = new Car("pobi");
+
 		// when
-		boolean result = Car.shouldMove(randomValue);
+		car.tryMove(randomValue);
 
 		// then
-		assertThat(result).isFalse();
+		assertThat(car.getPosition()).isZero();
 	}
 }

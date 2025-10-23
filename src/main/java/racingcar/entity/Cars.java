@@ -18,7 +18,7 @@ public class Cars {
 	public void moveAll() {
 		for (Car car : cars) {
 			int randomValue = Randoms.pickNumberInRange(0, 9);
-			car.move(Car.shouldMove(randomValue));
+			car.tryMove(randomValue);
 		}
 	}
 

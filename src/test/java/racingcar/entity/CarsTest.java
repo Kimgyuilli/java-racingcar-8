@@ -22,14 +22,14 @@ class CarsTest {
 			Car car2 = new Car("woni");
 			Car car3 = new Car("jun");
 
-			car1.move(true);
-			car1.move(true);
-			car1.move(true);  // position: 3
+			car1.tryMove(4);
+			car1.tryMove(4);
+			car1.tryMove(4);  // position: 3
 
-			car2.move(true);
-			car2.move(true);  // position: 2
+			car2.tryMove(4);
+			car2.tryMove(4);  // position: 2
 
-			car3.move(true);  // position: 1
+			car3.tryMove(4);  // position: 1
 
 			Cars cars = new Cars(List.of(car1, car2, car3));
 
@@ -49,15 +49,15 @@ class CarsTest {
 			Car car2 = new Car("woni");
 			Car car3 = new Car("jun");
 
-			car1.move(true);
-			car1.move(true);
-			car1.move(true);  // position: 3
+			car1.tryMove(4);
+			car1.tryMove(4);
+			car1.tryMove(4);  // position: 3
 
-			car2.move(true);
-			car2.move(true);
-			car2.move(true);  // position: 3
+			car2.tryMove(4);
+			car2.tryMove(4);
+			car2.tryMove(4);  // position: 3
 
-			car3.move(true);  // position: 1
+			car3.tryMove(4);  // position: 1
 
 			Cars cars = new Cars(List.of(car1, car2, car3));
 
@@ -77,14 +77,14 @@ class CarsTest {
 			Car car2 = new Car("woni");
 			Car car3 = new Car("jun");
 
-			car1.move(true);
-			car1.move(true);  // position: 2
+			car1.tryMove(4);
+			car1.tryMove(4);  // position: 2
 
-			car2.move(true);
-			car2.move(true);  // position: 2
+			car2.tryMove(4);
+			car2.tryMove(4);  // position: 2
 
-			car3.move(true);
-			car3.move(true);  // position: 2
+			car3.tryMove(4);
+			car3.tryMove(4);  // position: 2
 
 			Cars cars = new Cars(List.of(car1, car2, car3));
 

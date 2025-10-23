@@ -13,8 +13,10 @@ public class Car {
 		this.position = 0;
 	}
 
-	public static boolean shouldMove(int randomValue) {
-		return randomValue >= MOVE_THRESHOLD;
+	public void tryMove(int randomValue) {
+		if (randomValue >= MOVE_THRESHOLD) {
+			position++;
+		}
 	}
 
 	private void validateName(String name) {
@@ -23,12 +25,6 @@ public class Car {
 		}
 		if (name.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-		}
-	}
-
-	public void move(boolean shouldMove) {
-		if (shouldMove) {
-			position++;
 		}
 	}
 
