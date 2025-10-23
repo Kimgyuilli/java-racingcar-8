@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 public record CarDto(String name, int position) {
 }

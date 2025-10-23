@@ -3,8 +3,8 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.entity.Car;
-import racingcar.entity.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

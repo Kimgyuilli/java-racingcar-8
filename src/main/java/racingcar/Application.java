@@ -1,11 +1,13 @@
 package racingcar;
 
-import racingcar.config.AppConfig;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
 	public static void main(String[] args) {
-		AppConfig config = new AppConfig();
-		RacingGame racingGame = config.getRacingGame();
+		InputView inputView = new InputView();
+		OutputView outputView = new OutputView();
+		RacingGame racingGame = new RacingGame(inputView, outputView);
 		racingGame.run();
 	}
 }
