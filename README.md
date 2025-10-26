@@ -1,47 +1,32 @@
 ## 자동차 경주
 
-### 구현할 기능 목록
+### 구현 과정 (커밋 히스토리)
 
-#### 입력 처리
-- 경주할 자동차 이름을 입력받는 기능
-  - 쉼표(,)를 기준으로 구분
-  - 각 이름은 5자 이하만 가능
-  - 5자를 초과하는 경우 IllegalArgumentException 발생
-- 시도할 횟수를 입력받는 기능
-  - 숫자가 아닌 값을 입력한 경우 IllegalArgumentException 발생
-  - 0 이하의 값을 입력한 경우 IllegalArgumentException 발생
+#### 초기 설정
+- `5ec1344` - feat: setup project
+- `75a4d66` - build: upgrade Gradle versions
+- `9d6c680` - docs: README.md 요구사항 정리
 
-#### 자동차 생성 및 관리
-- 자동차 객체 생성 기능
-  - 이름을 가진 자동차 생성
-  - 자동차 이름 검증 (5자 이하)
-- 자동차 전진 기능
-  - 현재 위치를 저장하고 관리
-  - 전진 시 위치 증가
+#### 기본 기능 구현
+- `494cede` - feat: 돌아가는 코드 작성
 
-#### 게임 진행 로직
-- 무작위 값 생성 기능
-  - 0~9 사이의 정수 생성 (Randoms.pickNumberInRange 사용)
-- 자동차 이동 조건 판단 기능
-  - 무작위 값이 4 이상이면 전진
-  - 4 미만이면 정지
-- 주어진 횟수만큼 경주 진행 기능
-  - 각 라운드마다 모든 자동차 이동 시도
+#### 리팩토링 - 입력 검증 및 상수화
+- `b33c586` - refactor(Car): 입력 검증 강화
+- `d5012c7` - refactor(Car): 매직넘버 상수화
 
-#### 결과 출력
-- 각 라운드별 실행 결과 출력 기능
-  - 자동차 이름과 현재 위치를 "-"로 표시
-  - 각 라운드 결과를 개행으로 구분
-- 우승자 판정 기능
-  - 가장 많이 전진한 자동차 찾기
-  - 우승자가 여러 명인 경우 모두 찾기
-- 최종 우승자 출력 기능
-  - 단독 우승자: "최종 우승자 : {이름}"
-  - 공동 우승자: "최종 우승자 : {이름1}, {이름2}, ..."
+#### 리팩토링 - 일급 컬렉션 도입
+- `1a40d62` - refactor(RacingGame): 책임 분리 - Cars 클래스 도입
+- `24c502e` - refactor(Cars): Cars record class로 변경
+- `faefc79` - refactor: Cars 일반 Class로 변경
 
-#### 예외 처리
-- 잘못된 입력에 대한 예외 처리
-  - IllegalArgumentException 발생 후 애플리케이션 종료
+#### 테스트 코드 작성
+- `184a23b` - test: Cars test 코드 작성
+
+#### 리팩토링 - DTO 패턴 및 최적화
+- `a272c8b` - refactor: Car dto를 통해 car 객체 직접 노출 방지
+- `fcf671a` - refactor(Car): shouldMove 간략화
+- `8a7863d` - refactor(AppConfig): AppConfig 정리
+- `6c7ba64` - refactor(Cars): 매직넘버 상수화
 
 ### 과제 진행 요구 사항
 
